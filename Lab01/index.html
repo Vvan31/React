@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/materialize-css@1.0.0/dist/css/materialize.min.css"/>
+    <!-- REACT API -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <!-- REACT DOM -->
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <!-- BABEL COMPILER -->
+    <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Convert the JSX (markup) into using the React API (createElement) and pass it to the render's 1st argument -->
+    <script type="text/babel">
+        const name ="Rottweiler"
+        const imageURL = "https://images.dog.ceo/breeds/rottweiler/n02106550_11693.jpg"
+        const markup = (
+            /* <div className="row">
+                <div className="col">
+                    <div className="card medium">
+                        <div className="card-image">
+                            <img src={imageURL} alt="" />
+                        </div>
+                        <div className="card-content">
+                            <p>{name}</p>
+                        </div>
+                    </div>
+                </div>
+            </div> */
+            createElement('div',{ className: 'row' },
+                createElement('div', { className: 'col' },
+                    createElement('div', { className: 'card medium' },
+                        createElement('div', { className: 'card-image' },
+                            createElement('img', {src: imageURL}, null), 
+                            createElement('div', { className: 'card-content' },
+                                createElement('p', null, name)
+                            )
+                        )
+                    )
+                )
+            )
+        );
+        /* import { createElement } from 'react'; */
+
+     /*    function createMarkup({ name, imageURL }) {
+            return createElement('div',{ className: 'row' },
+                createElement('div', { className: 'col' },
+                    createElement('div', { className: 'card medium' },
+                        createElement('div', { className: 'card-image' },
+                            createElement('img', {src: imageURL}, null), 
+                            createElement('div', { className: 'card-content' },
+                                createElement('p', null, name)
+                            )
+                        )
+                    )
+                )
+            );
+        } */
+
+        ReactDOM.render(markup, document.getElementById('root'))
+    </script>
+</body>
+</html>
