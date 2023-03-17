@@ -1,6 +1,6 @@
-export default function Button({ label }){
+export default function Button({ label, onCLick }){
     return (
-      <button className="Button">
+      <button className="Button" onClick={onCLick}>
         <div className="Button__Label">{label}</div>
       </button>
     );
