@@ -110,8 +110,16 @@ function App() {
       <h1>React Lab 5</h1>
       <h1>Login</h1>
       <div className="Container">
-        <Field label="Email"  onChange={(e)=> setEmail(e.target.value)} value={email} errorMessage={emailError}/>
-        <Field label="Password"  onChange={(e)=> setPassword(e.target.value)} value={password} errorMessage={passwordError}/> 
+        <Field 
+          label="Email"  
+          onChange={(e)=> setEmail(e.target.value)} 
+          value={email} 
+          errorMessage={emailError}/>
+        <Field 
+          label="Password"  
+          onChange={(e)=> setPassword(e.target.value)} 
+          value={password} 
+          errorMessage={passwordError}/> 
 
         <div className="Buttons">
           <button onClick={ clearForm } className="Button">
