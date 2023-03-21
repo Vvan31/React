@@ -238,3 +238,59 @@ function MyComponent() {
 }
 ```
 Every time your component renders, React will update the screen and then run the code inside `useEffect`. In other words, `useEffect` "delays" a piece of code from running until that render is reflected on the screen. 
+
+
+# CSS Modules 
+
+A CSS Module is a CSS file in which all class names and animations names are scoped locally by default. All URLs (`url(...)`) and `@imports` are in module request format (`./xxx`) and `../xxx` means relative, `xxx` and `xxx/yyy` means in modules folder, in `node_modules`.
+
+CSS Modules compile to a low-level interchange formate called ICSS or Interoperable CSS, but are written like normal CSS files: 
+```CSS
+/* style.css */
+.className{
+    color: green;
+}
+```
+When importing the CSS Module from a JS Module, it exports an object with all mappings from local names to global names.
+```JavaScript
+import styles from "./style.css";
+//import { className } from"./style.css"; 
+
+element.innerHTML = '<div class="' + styles.className + '">';
+```
+
+> For local class names camelCase naming is recommended, but not enforced. 
+
+### Composition 
+There can be multiple `composes` rules, but `composes` rules must be before other rules. Extending works only for local-scoped selectors and on;y if the selector is a single class name. When a class name composes another class name, the *CSS Module* exports both class names for the local class. This can add up multiple class names. 
+It's possible to compose multiple classes with `composes: classNameA classNameB`
+
+```CSS
+.className {
+  color: green;
+  background: red;
+}
+
+.otherClassName {
+  composes: className;
+  color: yellow;
+}
+```
+
+*Composing from other files*
+It's possible to compose class names from other CSS Modules
+```CSS
+.otherClassName{
+    composes: className from "./style.css";
+}
+```
+### Usage with preprocessors 
+Preprocessors can make it easy to define a block global or local. 
+
+```CSS
+:global {
+  .global-class-name {
+    color: green;
+  }
+}
+```
