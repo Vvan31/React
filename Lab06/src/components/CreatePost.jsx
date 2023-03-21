@@ -120,7 +120,7 @@ const CreatePost = ({ user, handleAddPost }) => {
       }>
         Create New Post
       </Typography>
-      <form onSubmit={handleSubmit}>
+      <form id="newPost" onSubmit={handleSubmit}>
         <Box sx={{ 
           flexGrow: 1,
           display: 'flex',
@@ -145,9 +145,18 @@ const CreatePost = ({ user, handleAddPost }) => {
              {/*  <input type="file" onChange={(e) => setImage(e.target.files[0])} ref={imageInputRef} /> */}
             </Grid>
             <Grid item xs={4}>
-              <button type="submit">Submit Post</button>
+              {/* <button type="submit">Submit Post</button> */}
+              <Button 
+                type="submit" 
+                variant="contained"
+                /* component="label" */
+                >
+                Upload Image
+              </Button> 
             </Grid>
-              
+          </Grid>
+        </Box>
+      </form>
               {/*
                 what is e.target.files
                 - e.target.files is an array of files
@@ -165,13 +174,9 @@ const CreatePost = ({ user, handleAddPost }) => {
             {/*  <input type="file" onChange={(e) => setImage(e.target.files[0])} ref={imageInputRef} />
               <button type="submit">Submit Post</button> */}
 
-              {/* <Button type="submit" variant="contained" component="label">
-                Upload Image
-              </Button>  */}
+              
           
-          </Grid>
-        </Box>
-      </form>
+          
     </>
   );
 };

@@ -15,10 +15,11 @@ function App() {
   useEffect(() => {
     document.title = user ? `${user}'s Feed` : 'Please Login'
   }, [user])
-
+  
   return user ? (
      <Main
       user={user}
+      setUser={setUser}
       handleAddPost={handleAddPost}
       posts={posts}
       setPosts={setPosts}

@@ -20,7 +20,13 @@ const HeaderOne = ({ user, setUser }) => {
         width: '100%',
         backgroundColor: '#f4f4f4' }}>
         <h1 color="#00ff00">Welcome, {user}</h1>
-        <Button variant="contained" onClick={() => setUser("")}>Logout</Button>
+        <Button 
+          variant="contained" 
+          onClick={() => {setUser("")}}
+        >
+          Logout
+        </Button>
+        
       </Box>
     </> 
   )
