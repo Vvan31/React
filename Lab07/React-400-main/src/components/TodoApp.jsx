@@ -8,22 +8,7 @@ import { todos as todosData } from '@/data/todoData'
 
 function TodoApp() {
     const [todos, setTodos] = useState(todosData)
-
-    const handleChange = (id) => {
-        setTodos((prevState) => {
-            console.log(prevState);
-            return prevState.map(todo => {
-                if (todo.id === id) {
-                    return {
-                        ...todo,
-                        completed: !todo.completed
-                    }
-                }
-                return todo
-            })
-        })
-    }
-
+    
     const deleteTodo = (id) => {
         setTodos((prevState) => {
             return prevState.filter(todo => todo.id !== id)
