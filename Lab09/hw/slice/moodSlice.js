@@ -3,6 +3,7 @@ import { getMoods } from '../api';
 
 const initialState = {
     mood: [],
+    currentMood: undefined,
     isLoading: false,
     error: null
 }
@@ -15,12 +16,12 @@ const moodSlice = createSlice({
             console.log(action)
             return action.payload
         },
-        changeMood: (state, action) => { state.mood = action.payload }
+        changeMood: (state, action) => { state.currentMood = action.payload }
     },
     extraReducers: {
         [getMoods.fulfilled]: (state, action) => {
             state.isLoading = false
-            state.data = action.payload
+            state.mood = action.payload
         }
     }
 })

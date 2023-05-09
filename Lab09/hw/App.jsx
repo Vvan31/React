@@ -8,12 +8,17 @@ import {
 import { changeColor } from './slice/colorSlice'
 import { changeMood } from './slice/moodSlice'
 import { changeSize } from './slice/sizeSlice'
+import { getMoods} from './api'
 
 function App() {
-  const currentMood = useSelector((state) => state.mood.mood)
-  const currentColor = useSelector((state) => state.color.color)
+  const currentMood = useSelector((state) => state.mood.currentMood)
+  const currentColor = useSelector((state) => state.color.currentColor)
   const currentSize = useSelector((state) => state.size.size)
   const dispatch = useDispatch()
+
+  React.useEffect(() => {
+      dispatch(getMoods())
+  }, [])
 
   const handleMoodUpdate = (event) => {
     const mood = event.target.dataset.type
@@ -22,7 +27,6 @@ function App() {
 
   const handleColorUpdate = (event) => {
     const color = event.target.dataset.type
-    console.log(color);
     dispatch(changeColor(color))
   }
 
@@ -30,7 +34,6 @@ function App() {
     if (event.target.innerText === "+") {
       dispatch(changeSize( 10))
     }else {
-      console.log(currentSize);
       dispatch(changeSize( -10))
     }
   }
@@ -59,9 +62,7 @@ function App() {
           <button key={"+"} onClick={handleSizeUpdate}>
             +
           </button>
-          
       </section>
-
     </div>
   )
 }
